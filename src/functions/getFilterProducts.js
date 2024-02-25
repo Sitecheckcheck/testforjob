@@ -45,7 +45,7 @@ export const getFilterProducts = async (params, count, setAllProducts) => {
   const data1 = await res1.json();
   setAllProducts(data1.result.length);
   data1.result.splice(count);
-  data1.result.splice(0, count - 10);
+  data1.result.splice(0, count - 50);
 
   let res2 = await fetch("http://api.valantis.store:40000/", {
     method: "POST",

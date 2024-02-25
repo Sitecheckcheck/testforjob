@@ -9,7 +9,7 @@ function App() {
   const [offset, setOffset] = useState(0);
   const [isloading, setIsloading] = useState(true);
   const [input, setInput] = useState();
-  const [countPages, setCountPages] = useState(10);
+  const [countPages, setCountPages] = useState(50);
   const [isFilter, setIsFilter] = useState(null);
   const [method, setMethod] = useState(null);
   const [allProducts, setAllProducts] = useState();
@@ -33,11 +33,11 @@ function App() {
 
   const handlePrev = async (method, count) => {
     if (isFilter === "filter") {
-      if (countPages > 10) {
+      if (countPages > 50) {
         setIsloading(true);
         try {
-          await handleFind(method, count - 10);
-          setCountPages(count - 10);
+          await handleFind(method, count - 50);
+          setCountPages(count - 50);
           setPage(page - 1);
         } catch (error) {
           console.log(error);
@@ -46,12 +46,12 @@ function App() {
         }
       }
     } else {
-      if (offset > 10) {
+      if (offset > 50) {
         setIsloading(true);
         try {
-          const data = await getProducts(offset - 10);
+          const data = await getProducts(offset - 50);
           setProducts(data);
-          setOffset(offset - 10);
+          setOffset(offset - 50);
           setPage(page - 1);
         } catch (error) {
           console.log(error);
@@ -67,8 +67,8 @@ function App() {
       if (allProducts - countPages > 0) {
         setIsloading(true);
         try {
-          await handleFind(method, count + 10);
-          setCountPages(count + 10);
+          await handleFind(method, count + 50);
+          setCountPages(count + 50);
           setPage(page + 1);
         } catch (error) {
           console.log(error);
@@ -79,9 +79,9 @@ function App() {
     } else {
       setIsloading(true);
       try {
-        const data = await getProducts(offset + 10);
+        const data = await getProducts(offset + 50);
         setProducts(data);
-        setOffset(offset + 10);
+        setOffset(offset + 50);
         setPage(page + 1);
       } catch (error) {
         console.log(error);
@@ -116,21 +116,21 @@ function App() {
             <div>
               <button
                 onClick={() => {
-                  handleFind("product", 10);
+                  handleFind("product", 50);
                 }}
               >
                 в названии
               </button>
               <button
                 onClick={() => {
-                  handleFind("price", 10);
+                  handleFind("price", 50);
                 }}
               >
                 в цене
               </button>
               <button
                 onClick={() => {
-                  handleFind("brand", 10);
+                  handleFind("brand", 50);
                 }}
               >
                 в бренде

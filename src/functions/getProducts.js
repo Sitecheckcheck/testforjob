@@ -24,7 +24,7 @@ export const getProducts = async (offset) => {
     },
     body: JSON.stringify({
       action: "get_ids",
-      params: { offset: offset, limit: 10 },
+      params: { offset: offset, limit: 50 },
     }),
   });
 
@@ -38,7 +38,7 @@ export const getProducts = async (offset) => {
       },
       body: JSON.stringify({
         action: "get_ids",
-        params: { offset: offset, limit: 10 },
+        params: { offset: offset, limit: 50 },
       }),
     });
   }
